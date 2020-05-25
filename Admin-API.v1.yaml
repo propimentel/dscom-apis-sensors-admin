@@ -8,7 +8,7 @@ servers:
 paths:
   /admLogin:
     post:
-      summary: Login/Token
+      summary: Login/Token (POST)
       responses:
         '200':
           description: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImlhdCI6MTU5MDQzMzgzNywiZXhwIjoxNTkwNDM3NDM3LCJpc3MiOiJmaXJlYmFzZS1hZG1pbnNkay1md3Q3bEBkccNvbS1icmV0LXNlbnNvcnMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1md3Q3bEBkc2NvbS1icmV0LXNlbnNvcnMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJ1aWQiOiJzc21zX2FkbWluIiwiY2xhaW1zIjp7ImNvbXBhbbkiOiIxIn19.hZgXpydY7FcVnM8Nm8BiMa6gji4BIIjZRuMc8akKCwYo0X8hLb_NRE-aVEfYiyJGpOEtzKYDYbeC6b07k8YwrEAwzw7FuMS8LCHNXUC_uyd4Dg8YkukxiAqCuqbXlFmJwR3qSdYR9XfjOf01d0dk4VIJVQY4atzTUPwKxoc3b5EO-qFECzRob8qfoeABW3tSqNhyrRzdha3SIsp6Vi0bGY510TfTPGzP9qCntJ2JfTENakjIHdDsr86IboldG39QQLS33CqnSHBDznbuliAVXSCekt43x5TAz162OCHyRv4vrZNl27pOirFXdUtvKG6IVCrupJl5qmz03CbdJtxHZg
@@ -33,7 +33,7 @@ paths:
     parameters: []
   /admUsers:
     get:
-      summary: Usuários
+      summary: Usuários (GET)
       tags: []
       responses:
         '200':
@@ -77,7 +77,7 @@ paths:
       description: Lista usuários por companhia.
     parameters: []
     post:
-      summary: ''
+      summary: Usuários (POST)
       operationId: post-admUsers
       responses:
         '200':
@@ -113,7 +113,7 @@ paths:
           }
   /admSensors:
     get:
-      summary: Sensores
+      summary: Sensores (GET)
       tags: []
       responses:
         '200':
@@ -231,7 +231,7 @@ paths:
           in: query
           name: uid
     post:
-      summary: ''
+      summary: Sensores (POST)
       operationId: post-admSensors
       responses:
         '200':
