@@ -1,0 +1,274 @@
+openapi: 3.0.0
+info:
+  title: Admin API
+  version: '1.0'
+  description: Administração de Usuários e atribuição de sensores por companhia.
+servers:
+  - url: 'https://us-central1-dscom-bret-sensors.cloudfunctions.net'
+paths:
+  /admLogin:
+    post:
+      summary: Login/Token
+      responses:
+        '200':
+          description: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImlhdCI6MTU5MDQzMzgzNywiZXhwIjoxNTkwNDM3NDM3LCJpc3MiOiJmaXJlYmFzZS1hZG1pbnNkay1md3Q3bEBkccNvbS1icmV0LXNlbnNvcnMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1md3Q3bEBkc2NvbS1icmV0LXNlbnNvcnMuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJ1aWQiOiJzc21zX2FkbWluIiwiY2xhaW1zIjp7ImNvbXBhbbkiOiIxIn19.hZgXpydY7FcVnM8Nm8BiMa6gji4BIIjZRuMc8akKCwYo0X8hLb_NRE-aVEfYiyJGpOEtzKYDYbeC6b07k8YwrEAwzw7FuMS8LCHNXUC_uyd4Dg8YkukxiAqCuqbXlFmJwR3qSdYR9XfjOf01d0dk4VIJVQY4atzTUPwKxoc3b5EO-qFECzRob8qfoeABW3tSqNhyrRzdha3SIsp6Vi0bGY510TfTPGzP9qCntJ2JfTENakjIHdDsr86IboldG39QQLS33CqnSHBDznbuliAVXSCekt43x5TAz162OCHyRv4vrZNl27pOirFXdUtvKG6IVCrupJl5qmz03CbdJtxHZg
+      operationId: post-admLogin
+      description: |-
+        Recebe o token para uso com a API.
+        <br>
+        https://www.blitter.se/utils/basic-authentication-header-generator/
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          description: Basic Usuário/Senha
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: company
+          description: Código da Companhia
+          required: true
+    parameters: []
+  /admUsers:
+    get:
+      summary: Usuários
+      tags: []
+      responses:
+        '200':
+          description: |-
+            [
+                {
+                    "email": "sedemurilo@hotmail.com",
+                    "name": "Vandoir Bruxel",
+                    "uid": "ihAQ63z29tNn3nAz0aBJKqqCUsh1",
+                    "lastSignInTime": "Mon, 11 May 2020 18:27:42 GMT",
+                    "creationTime": "Mon, 04 May 2020 15:20:13 GMT"
+                },
+                {
+                    "email": "transportes5irmaos@grupopivetta.com.br",
+                    "name": "Transportes 5 Irmãos",
+                    "uid": "1ThMo70Ew9W8jn5aJmxeVn6xOeY2",
+                    "lastSignInTime": "Thu, 14 May 2020 23:45:48 GMT",
+                    "creationTime": "Tue, 10 Mar 2020 12:22:31 GMT"
+                },
+                {
+                    "email": "dauto@bretanhasuinos.com.br",
+                    "name": "Dauto",
+                    "uid": "lS1VZfaGkBZWc1o0CewESczGF2H2",
+                    "lastSignInTime": "Mon, 28 Oct 2019 19:31:21 GMT",
+                    "creationTime": "Mon, 28 Oct 2019 19:31:21 GMT"
+                }
+            ]
+      operationId: get-users
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          description: Bearer token
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: company
+          required: true
+      description: Lista usuários por companhia.
+    parameters: []
+    post:
+      summary: ''
+      operationId: post-admUsers
+      responses:
+        '200':
+          description: Se OK retorna status 200 (sem body).
+      description: Atualiza dados do usuário.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: company
+        - schema:
+            type: string
+          in: query
+          name: uid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+        description: |-
+          {
+            "name":"Paulo R O Pimentel",
+          }
+          ou
+          {
+            "password":"Prop1001"
+          }
+          ou
+          {
+            "name":"Paulo R O Pimentel",
+            "password":"Prop1001"
+          }
+  /admSensors:
+    get:
+      summary: Sensores
+      tags: []
+      responses:
+        '200':
+          description: |-
+            [
+                {
+                    "id": 53526636127578,
+                    "_updateDate": "2020-02-13T12:23:26.314Z",
+                    "_creationDate": "2020-01-08T19:40:35.939Z",
+                    "long": "",
+                    "timeout": "30",
+                    "sensorsTemp": "2",
+                    "name": "SMARTSAFE-00020 - Caibi 1",
+                    "sensorsDoors": "0",
+                    "lat": "",
+                    "tempmax": "18.5",
+                    "measure": {
+                        "id": 53526636127578,
+                        "_measure_date": "2020-02-13T12:23:26.140Z",
+                        "status": [
+                            {
+                                "sensors": [
+                                    {
+                                        "data": 16.87,
+                                        "id": 11540066354665216
+                                    },
+                                    {
+                                        "id": 11540041977370368,
+                                        "data": 17
+                                    }
+                                ],
+                                "alarm_power": true,
+                                "timestamp": 1581596603,
+                                "input2": 0,
+                                "alarm_battery": false,
+                                "intr1": 0,
+                                "input1": 0,
+                                "intr2": 0
+                            }
+                        ],
+                        "version": 1,
+                        "model": 1,
+                        "type": 0
+                    },
+                    "_longitude": -53.2871815,
+                    "company": "1",
+                    "_latitude": -27.0598104,
+                    "sensorsHumid": "0",
+                    "tempmin": "14"
+                },
+                {
+                    "measure": {
+                        "version": 1,
+                        "model": 1,
+                        "type": 0,
+                        "id": 53526636127614,
+                        "_measure_date": "2020-03-05T10:21:11.725Z",
+                        "status": [
+                            {
+                                "intr2": 0,
+                                "sensors": [
+                                    {
+                                        "data": 17.12,
+                                        "id": 11539728679638784
+                                    },
+                                    {
+                                        "id": 11539963644548864,
+                                        "data": 16.81
+                                    }
+                                ],
+                                "alarm_power": false,
+                                "timestamp": 1583403669,
+                                "input2": 0,
+                                "alarm_battery": false,
+                                "intr1": 0,
+                                "input1": 0
+                            }
+                        ]
+                    },
+                    "_longitude": -53.0792197,
+                    "company": "1",
+                    "sensorsHumid": "0",
+                    "_latitude": -27.0726368,
+                    "tempmin": "14",
+                    "id": 53526636127614,
+                    "_updateDate": "2020-03-05T10:21:12.040Z",
+                    "_creationDate": "2020-01-08T19:47:21.242Z",
+                    "long": "",
+                    "timeout": "30",
+                    "sensorsTemp": "2",
+                    "_model": "SMWE-TT",
+                    "name": "SMARTSAFE-00023 São Carlos 2",
+                    "sensorsDoors": "0",
+                    "lat": "",
+                    "tempmax": "18.5"
+                }
+            ]
+      operationId: get-admSensors
+      description: |-
+        Retorna sensores por usuário e companhia.
+        Se companhia = 0, retorna sensores ainda não assignados.
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: Authorization
+          description: Bearer token
+        - schema:
+            type: string
+          in: query
+          name: company
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: uid
+    post:
+      summary: ''
+      operationId: post-admSensors
+      responses:
+        '200':
+          description: ''
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: sensor
+      description: |-
+        Liga sensores a usuários e companhias.
+        Remove relação com usuários.
+        Remove relações com usuários e companhias.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              example-1: {}
+        description: |-
+          <p>Relaciona Sensor/Usuário:<br>
+          {
+            "action":"set",
+            "uid": "W7QKvbGlCcZneLQekqD2XYgM4rz2"
+          }</p>
+          <br>
+          <p>Remove relação Sensor/Usuário:<br>
+          {
+            "action":"unset",
+            "uid": "W7QKvbGlCcZneLQekqD2XYgM4rz2"
+          }</p>
+          <br>
+          <p>Remove todas relações (companhia e usuários):<br>
+          {
+            "action":"release",
+          }</p>
+components:
+  schemas: {}
+security: []
