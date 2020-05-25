@@ -99,18 +99,22 @@ paths:
               type: object
               properties: {}
         description: |-
-          {
+          <p>{
             "name":"Paulo R O Pimentel",
           }
+          <br>
           ou
+          <br>
           {
             "password":"Prop1001"
           }
+          <br>
           ou
+          <br>
           {
             "name":"Paulo R O Pimentel",
             "password":"Prop1001"
-          }
+          }</p>
   /admSensors:
     get:
       summary: Sensores (GET)
@@ -242,9 +246,9 @@ paths:
           in: query
           name: sensor
       description: |-
-        Liga sensores a usuários e companhias.
-        Remove relação com usuários.
-        Remove relações com usuários e companhias.
+        <p>- Liga sensores a usuários e companhias.<br>
+        - Remove relação com usuários.<br>
+        - Remove relações com usuários e companhias.</p>
       requestBody:
         content:
           application/json:
